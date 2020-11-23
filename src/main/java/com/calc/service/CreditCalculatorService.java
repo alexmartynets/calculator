@@ -28,9 +28,9 @@ public class CreditCalculatorService {
     }
 
     private void mainCode(BigDecimal sumOfCredit, Integer termsOfCredit, BigDecimal percentRate, List<CreditCalculator> creditCalculatorList) {
-        if (sumOfCredit.doubleValue() >= 100000 & sumOfCredit.doubleValue() <= 5000000
-                & termsOfCredit >= 12 & termsOfCredit <= 60
-                & percentRate.doubleValue() >= 12.9 & percentRate.doubleValue() <= 23.9) {
+        if (sumOfCredit.doubleValue() >= 100000 && sumOfCredit.doubleValue() <= 5000000
+                && termsOfCredit >= 12 && termsOfCredit <= 60
+                && percentRate.doubleValue() >= 12.9 && percentRate.doubleValue() <= 23.9) {
             BigDecimal percentMonth = percentRate
                     .divide(BigDecimal.valueOf(12), 10, RoundingMode.HALF_UP)
                     .divide(BigDecimal.valueOf(100), 10, RoundingMode.HALF_UP);
