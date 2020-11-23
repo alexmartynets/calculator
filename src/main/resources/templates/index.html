@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create User</title>
+</head>
+<body>
+<div>
+    <form action="/" method="get">
+        <table>
+            <tr>
+                <td><h2>Параметры для расчета ежемесячных платежей</h2></td>
+            </tr>
+            <tr>
+                <td><label>Введите сумму кредита (от 100 000 до 5 000 000):</label></td>
+                <td><input type="number" name="sumOfCredit" placeholder="сумма кредита"></td>
+            </tr>
+            <tr>
+                <td><label>Введите срок кредита в мес (от 12 до 60):</label></td>
+                <td><input type="number" name="termsOfCredit" placeholder="срок кредита мес"></td>
+            </tr>
+            <tr>
+                <td><label>Введите годовую процентную ставку (от 12.9% до 23.9%):</label></td>
+                <td><input type="number" step="any" name="percentRate" placeholder="годовая процентная ставка"></td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Submit</button>
+                </td>
+                <td>
+                    <button type="reset">Reset</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <br>
+</div>
+
+<div>
+    <h1>Расчет суммы платежей и процентов</h1>
+    <table border="1">
+        <tr>
+            <td>Номер платежа</td>
+            <td>Месяц/Год</td>
+            <td>Платеж по основному долгу</td>
+            <td>Платеж по процентам</td>
+            <td>Остаток основного долга</td>
+            <td>Общая сумма платежа</td>
+        </tr>
+
+        <tr th:each="list: ${table}">
+            <td th:utext="${list.getId()}"></td>
+            <td th:utext="${list.getLocalDate()}"></td>
+            <td th:utext="${list.getBasePaymentCredit()}"></td>
+            <td th:utext="${list.getPercentPayment()}"></td>
+            <td th:utext="${list.getBaseCredit()}"></td>
+            <td th:utext="${list.getFullMountOfPayment()}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
